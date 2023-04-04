@@ -19,9 +19,41 @@ export default function RacerDisplay() {
 
     const tableHeaders = ["#", 'First', 'Last', 'Points', 'Wins', 'Nationality', 'Constructor'];
 
+    const handleFormSubmit = event => {
+        event.preventDefault();
+        let season = event.target.season.value;
+        let round = event.target.round.value;
+        setSeason(season);
+        setRound(round);
+        event.target.season.value = '';
+        event.target.round.value = '';
+    };
+
+    // function handleFormSubmit(event){
+    //     event.preventDefault();
+    //     let season = event.target.season.value;
+    //     let round = event.target.round.value;
+    //     setSeason(season);
+    //     setRound(round);
+    //     event.target.season.value = '';
+    //     event.target.round.value = '';
+    // };
+
     return (
         <div>
             <h1 className="text-center">Racer Standings</h1>
+
+            <form action="" className='row my-3' onSubmit={handleFormSubmit}>
+                <div className="col-12 col-md-5">
+                    <input type="text" name="season" className="form-control" placeholder='Enter Season e.g. 2023'/>
+                </div>
+                <div className="col-12 col-md-5">
+                    <input type="text" name="round" className="form-control" placeholder='Enter Round e.g. 1' />
+                </div>
+                <div className="col">
+                    <input type="submit" value="Search" className="btn btn-success w-100" />
+                </div>
+            </form>
 
             <table className="table table-primary table-striped">
                 <thead>
