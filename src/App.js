@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import ButtonDisplay from './views/ButtonDisplay';
+import RacerDisplay from './views/RacerDisplay';
 
 function App() {
     let name = 'Brian';
@@ -12,7 +13,7 @@ function App() {
             <div className='container'>
                 <Routes>
                     <Route path='/' element={<ButtonDisplay name={name} />} />
-                    <Route path='/hello' element={<h1>Hello World</h1>} />
+                    <Route path='/racers' element={<RacerDisplay />} />
                 </Routes>
                 
             </div>
