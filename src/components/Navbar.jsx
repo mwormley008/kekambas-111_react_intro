@@ -16,6 +16,7 @@ export default function Navbar({ username, city }) {
                         <Link className="nav-link" to="/">Home</Link>
                         <Link className="nav-link" to="/racers">Racers</Link>
                         <Link className="nav-link" to="/buttons">Button Fun!</Link>
+                        <Link className="nav-link" to="/register">Sign Up</Link>
                     </div>
                 </div>
             </div>

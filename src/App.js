@@ -4,6 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import ButtonDisplay from './views/ButtonDisplay';
 import RacerDisplay from './views/RacerDisplay';
 import Home from './views/Home';
+import Register from './views/Register';
+
 
 function App() {
     let name = 'Brian';
@@ -16,6 +18,7 @@ function App() {
                     <Route path='/' element={<Home />} /> 
                     <Route path='/buttons' element={<ButtonDisplay name={name} />} />
                     <Route path='/racers' element={<RacerDisplay />} />
+                    <Route path='/register' element={<Register />} />
                 </Routes>
                 
             </div>
