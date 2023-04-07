@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import AlertMessage from './components/AlertMessage';
 import Navbar from './components/Navbar';
 import ButtonDisplay from './views/ButtonDisplay';
+import CreatePost from './views/CreatePost';
 import Home from './views/Home';
 import Login from './views/Login';
 import RacerDisplay from './views/RacerDisplay';
@@ -41,6 +42,7 @@ function App() {
                     <Route path='/racers' element={<RacerDisplay />} />
                     <Route path='/register' element={<Register flashMessage={flashMessage} />} />
                     <Route path='/login' element={<Login flashMessage={flashMessage} logUserIn={setLoggedIn} />} />
+                    <Route path='/create' element={<CreatePost flashMessage={flashMessage} loggedIn={loggedIn} />} />
                 </Routes>
                 
             </div>

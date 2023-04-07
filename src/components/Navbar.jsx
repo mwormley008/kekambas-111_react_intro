@@ -18,6 +18,7 @@ export default function Navbar({ username, city, loggedIn, logUserOut }) {
                             <>
                             <Link className="nav-link" to="/racers">Racers</Link>
                             <Link className="nav-link" to="/buttons">Button Fun!</Link>
+                            <Link className="nav-link" to="/create">Create A Post</Link>
                             <Link className="nav-link" to="/" onClick={() => logUserOut()}>Log Out</Link>
                             </>
                         ) : (
