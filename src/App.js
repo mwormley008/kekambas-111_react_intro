@@ -4,6 +4,7 @@ import AlertMessage from './components/AlertMessage';
 import Navbar from './components/Navbar';
 import ButtonDisplay from './views/ButtonDisplay';
 import Home from './views/Home';
+import Login from './views/Login';
 import RacerDisplay from './views/RacerDisplay';
 import Register from './views/Register';
 
@@ -29,6 +30,7 @@ function App() {
                     <Route path='/buttons' element={<ButtonDisplay name={name} />} />
                     <Route path='/racers' element={<RacerDisplay />} />
                     <Route path='/register' element={<Register flashMessage={flashMessage} />} />
+                    <Route path='/login' element={<Login />} />
                 </Routes>
                 
             </div>
