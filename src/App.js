@@ -12,6 +12,9 @@ import Register from './views/Register';
 function App() {
     let name = 'Brian';
 
+    const now = new Date();
+
+    const [loggedIn, setLoggedIn] = useState((localStorage.getItem('token') && new Date(localStorage.getItem('tokenExp')) > now) || false);
     const [message, setMessage] = useState(null);
     const [category, setCategory] = useState(null);
 
@@ -20,9 +23,16 @@ function App() {
         setCategory(category);
     };
 
+    function logUserOut(){
+        setLoggedIn(false);
+        localStorage.removeItem('token');
+        localStorage.removeItem('tokenExp');
+        flashMessage('You have logged out', 'primary')
+    };
+
     return (
         <div className="App">
-            <Navbar username={name} city={"Chicago"}/>
+            <Navbar username={name} city={"Chicago"} loggedIn={loggedIn} logUserOut={logUserOut} />
             {message ? <AlertMessage message={message} category={category} flashMessage={flashMessage} /> : null}
             <div className='container'>
                 <Routes>
@@ -30,7 +40,7 @@ function App() {
                     <Route path='/buttons' element={<ButtonDisplay name={name} />} />
                     <Route path='/racers' element={<RacerDisplay />} />
                     <Route path='/register' element={<Register flashMessage={flashMessage} />} />
-                    <Route path='/login' element={<Login flashMessage={flashMessage} />} />
+                    <Route path='/login' element={<Login flashMessage={flashMessage} logUserIn={setLoggedIn} />} />
                 </Routes>
                 
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Login({ flashMessage }) {
+export default function Login({ flashMessage, logUserIn }) {
 
     const navigate = useNavigate();
 
@@ -33,6 +33,9 @@ export default function Login({ flashMessage }) {
             // Store the value in local storage on the browser
             localStorage.setItem('token', token);
             localStorage.setItem('tokenExp', expiration);
+
+            // Change the state of loggedIn to true
+            logUserIn(true);
 
             // flash a success message and redirect
             flashMessage('You have successully logged in', 'success');
