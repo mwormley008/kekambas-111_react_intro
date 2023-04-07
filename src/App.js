@@ -30,7 +30,7 @@ function App() {
                     <Route path='/buttons' element={<ButtonDisplay name={name} />} />
                     <Route path='/racers' element={<RacerDisplay />} />
                     <Route path='/register' element={<Register flashMessage={flashMessage} />} />
-                    <Route path='/login' element={<Login />} />
+                    <Route path='/login' element={<Login flashMessage={flashMessage} />} />
                 </Routes>
                 
             </div>

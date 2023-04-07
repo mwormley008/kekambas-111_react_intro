@@ -1,11 +1,45 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function Login({ flashMessage }) {
 
-    function handleLogin(event){
+    const navigate = useNavigate();
+
+    async function handleLogin(event){
         event.preventDefault();
-        console.log(event);
-    }
+        // console.log(event);
+
+        let username = event.target.username.value;
+        let password = event.target.password.value;
+        let stringToEncode = `${username}:${password}`
+
+        let myHeaders = new Headers();
+        myHeaders.append('Authorization', `Basic ${btoa(stringToEncode)}`);
+
+        let response = await fetch('http://localhost:5000/api/token', {
+            headers: myHeaders
+        });
+
+        let data = await response.json();
+
+        if (data.error){
+            flashMessage(data.error, 'danger');
+        } else {
+            // Get the token and token expiration from the response data
+            console.log(data);
+            let token = data.token;
+            let expiration = data.token_exp;
+
+            // Store the value in local storage on the browser
+            localStorage.setItem('token', token);
+            localStorage.setItem('tokenExp', expiration);
+
+            // flash a success message and redirect
+            flashMessage('You have successully logged in', 'success');
+            navigate('/');
+        };
+
+    };
 
     return (
         <>
