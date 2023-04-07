@@ -8,6 +8,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import RacerDisplay from './views/RacerDisplay';
 import Register from './views/Register';
+import SinglePost from './views/SinglePost';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
                     <Route path='/register' element={<Register flashMessage={flashMessage} />} />
                     <Route path='/login' element={<Login flashMessage={flashMessage} logUserIn={setLoggedIn} />} />
                     <Route path='/create' element={<CreatePost flashMessage={flashMessage} loggedIn={loggedIn} />} />
+                    <Route path='/posts/:postId' element={<SinglePost />} />
                 </Routes>
                 
             </div>
