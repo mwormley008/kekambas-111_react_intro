@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register({ flashMessage }) {
+
+    const navigate = useNavigate();
 
     const handleRegister = event => {
         event.preventDefault();
@@ -35,6 +38,7 @@ export default function Register({ flashMessage }) {
                         flashMessage(data.error, 'danger');
                     } else {
                         flashMessage(`${data.username} has been created`, 'success');
+                        navigate('/');
                     }
                 })
         }
