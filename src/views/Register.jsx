@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Register() {
+export default function Register({ flashMessage }) {
 
     const handleRegister = event => {
         event.preventDefault();
@@ -8,7 +8,7 @@ export default function Register() {
         let password = event.target.password.value;
         let confirmPass = event.target.confirmPass.value;
         if (password !== confirmPass){
-            console.warn('Passwords do not match!')
+            flashMessage('Passwords do not match', 'warning');
         } else{
             // Make the Post Request to Flask API
             console.log('Passwords do match! Hooray!!')
@@ -32,9 +32,9 @@ export default function Register() {
                 .then(res => res.json())
                 .then(data => {
                     if (data.error){
-                        console.error(data.error)
+                        flashMessage(data.error, 'danger');
                     } else {
-                        console.log(data)
+                        flashMessage(`${data.username} has been created`, 'success');
                     }
                 })
         }
