@@ -32,7 +32,7 @@ export default function CreatePost({ loggedIn, flashMessage }) {
         let requestBody = JSON.stringify({ title, body })
 
         // Make the fetch request
-        let response = await fetch('http://localhost:5000/api/posts', {
+        let response = await fetch('https://kekambas-blog-api.onrender.com/api/posts', {
             method: 'POST',
             headers: myHeaders,
             body: requestBody

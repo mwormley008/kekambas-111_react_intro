@@ -16,8 +16,13 @@ export default function Login({ flashMessage, logUserIn }) {
         let myHeaders = new Headers();
         myHeaders.append('Authorization', `Basic ${btoa(stringToEncode)}`);
 
-        let response = await fetch('http://localhost:5000/api/token', {
-            headers: myHeaders
+        let response = await fetch('https://kekambas-blog-api.onrender.com/api/token', {
+            method: 'POST',
+            headers: myHeaders,
+            body: {
+                "username": username,
+                "password": password
+            }
         });
 
         let data = await response.json();

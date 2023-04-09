@@ -20,14 +20,14 @@ export default function Register({ flashMessage }) {
             myHeaders.append('Content-Type', 'application/json');
 
             let formData = JSON.stringify({
-                first_name: event.target.firstName.value,
-                last_name: event.target.lastName.value,
+                // first_name: event.target.firstName.value,
+                // last_name: event.target.lastName.value,
                 email: event.target.email.value,
                 username: event.target.username.value,
-                password
+                password: event.target.password.value
             })
 
-            fetch('http://localhost:5000/api/users', {
+            fetch('https://kekambas-blog-api.onrender.com/api/users', {
                 method: 'POST',
                 headers: myHeaders,
                 body: formData
