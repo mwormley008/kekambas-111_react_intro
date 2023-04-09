@@ -18,7 +18,7 @@ export default function CreatePost({ loggedIn, flashMessage }) {
 
         // Get the data from the form
         let title = e.target.title.value;
-        let body = e.target.body.value;
+        let content = e.target.body.value;
 
         // Get the token from localStorage
         let token = localStorage.getItem('token');
@@ -29,7 +29,7 @@ export default function CreatePost({ loggedIn, flashMessage }) {
         myHeaders.append('Authorization', `Bearer ${token}`);
 
         // Set up the request body
-        let requestBody = JSON.stringify({ title, body })
+        let requestBody = JSON.stringify({ title, content })
 
         // Make the fetch request
         let response = await fetch('https://kekambas-blog-api.onrender.com/api/posts', {
