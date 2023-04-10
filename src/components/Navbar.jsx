@@ -7,7 +7,6 @@ export default function Navbar({ username, city, loggedIn, logUserOut }) {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/">Welcome {username} from {city}</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -16,8 +15,6 @@ export default function Navbar({ username, city, loggedIn, logUserOut }) {
                         <Link className="nav-link" to="/">Home</Link>
                         {loggedIn ? (
                             <>
-                            <Link className="nav-link" to="/racers">Racers</Link>
-                            <Link className="nav-link" to="/buttons">Button Fun!</Link>
                             <Link className="nav-link" to="/create">Create A Post</Link>
                             <Link className="nav-link" to="/" onClick={() => logUserOut()}>Log Out</Link>
                             </>

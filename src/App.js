@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AlertMessage from './components/AlertMessage';
 import Navbar from './components/Navbar';
-import ButtonDisplay from './views/ButtonDisplay';
 import CreatePost from './views/CreatePost';
 import Home from './views/Home';
 import Login from './views/Login';
-import RacerDisplay from './views/RacerDisplay';
 import Register from './views/Register';
 import SinglePost from './views/SinglePost';
+import EditPost from './views/EditPost';
 
 
 function App() {
@@ -39,12 +38,11 @@ function App() {
             <div className='container'>
                 <Routes>
                     <Route path='/' element={<Home />} /> 
-                    <Route path='/buttons' element={<ButtonDisplay name={name} />} />
-                    <Route path='/racers' element={<RacerDisplay />} />
                     <Route path='/register' element={<Register flashMessage={flashMessage} />} />
                     <Route path='/login' element={<Login flashMessage={flashMessage} logUserIn={setLoggedIn} />} />
                     <Route path='/create' element={<CreatePost flashMessage={flashMessage} loggedIn={loggedIn} />} />
                     <Route path='/posts/:postId' element={<SinglePost />} />
+                    <Route path='/edit/:postId' element={<EditPost flashMessage={flashMessage} loggedIn={loggedIn} />} />
                 </Routes>
                 
             </div>

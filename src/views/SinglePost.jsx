@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PostCard from '../components/PostCard';
+import DeleteButton from '../components/Button';
 
 export default function SinglePost() {
     const params = useParams();
@@ -19,6 +20,7 @@ export default function SinglePost() {
     return (
         <div>
             <PostCard post={post} />
+            {/* deleteButton={<DeleteButton />} */}
         </div>
     )
 }

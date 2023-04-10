@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PostCard from '../components/PostCard';
+import DeleteButton from '../components/Button';
 
 export default function Home() {
     
@@ -20,6 +21,7 @@ export default function Home() {
         <div>
             <h1 className="text-center">Welcome to the Blog</h1>
             {posts.map( post => <PostCard key={post.id} post={post} />)}
+            {/* deleteButton={<DeleteButton />} */}
         </div>
     )
 }
