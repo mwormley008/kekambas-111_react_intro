@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import PostCard from '../components/PostCard';
-import DeleteButton from '../components/Button';
 
-export default function SinglePost() {
+export default function SinglePost({ loggedIn, flashMessage }) {
+
+    const navigate = useNavigate();
     const params = useParams();
-
     const [post, setPost] = useState({});
+    const userData = 0
 
     useEffect(() => {
         fetch(`https://kekambas-blog-api.onrender.com/api/posts/${params.postId}`)
@@ -15,12 +16,47 @@ export default function SinglePost() {
                 console.log(data);
                 setPost(data);
             })
-    }, [params.postId])
+    }, [params.postId]);
+
+    async function handleDelete() {
+        // Get the token from localStorage
+        let token = localStorage.getItem('token');
     
+        // Set up the request headers
+        let myHeaders = new Headers();
+        myHeaders.append('Authorization', `Bearer ${token}`);
+    
+        // Make the fetch request
+        let response = await fetch(`https://kekambas-blog-api.onrender.com/api/posts/${params.postId}`, {
+            method: 'DELETE',
+            headers: myHeaders
+        });
+        
+        let data = await response.json();
+    
+        if (data.error){
+            flashMessage(data.error, 'danger');
+        } else {
+            flashMessage(`Post has been deleted`, 'success');
+            navigate('/');
+        };
+        
+
+        // userData = await fetch(`https://kekambas-blog-api.onrender.com/api/me`, {
+        //     method: 'GET',
+        //     headers: myHeaders
+        // });
+        
+    }
+    
+    console.log(post.id, userData.id)
+
     return (
         <div>
             <PostCard post={post} />
-            {/* deleteButton={<DeleteButton />} */}
+            <input type="submit" value="Delete Post" className='btn btn-danger' onClick={handleDelete}/>
+            {/* {loggedIn && post.user_id === loggedIn.id && (
+            )} */}
         </div>
-    )
+    );
 }

@@ -17,7 +17,6 @@ export default function PostCard({ post, deleteButton }) {
                         <p className="card-text">{ post.content }</p>
                         <Link className='btn btn-primary mx-1' to={`/posts/${post.id}`}>See More</Link>
                         <Link className='btn btn-success mx-1' to={`/edit/${post.id}`}>Edit</Link>
-                        {deleteButton}
                     </div>
                 </div>
             </div>
